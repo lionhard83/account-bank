@@ -1,9 +1,10 @@
 "use strict";
 exports.__esModule = true;
 var Account_1 = require("./Account");
+var bank = new Account_1.Account(0);
 var account1 = new Account_1.Account(100);
 var account2 = new Account_1.Account(300);
 var account3 = new Account_1.Account(50);
-account1.sendMoney(75, account2);
-console.log("account1:", account1);
-console.log("account2:", account2);
+account1.sendMoney(75, account2, bank);
+account2.sendMoney(100, account3, bank);
+console.log("bank:", bank);

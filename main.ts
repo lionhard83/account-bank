@@ -7,6 +7,7 @@ const account3 = new Account(50);
 
 
 account1.sendMoney(75, account2, bank);
+account2.sendMoney(100, account3, bank);
 
-console.log("account1:", account1);
-console.log("account2:", account2);
+console.log("bank:", bank);
+

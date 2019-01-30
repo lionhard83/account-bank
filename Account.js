@@ -7,16 +7,22 @@ var Account = /** @class */ (function () {
         this.transactions = [];
         this.id = incrementalId++;
     }
-    Account.prototype.sendMoney = function (amount, otherAccount) {
-        if (this.budget >= amount) {
-            this.budget -= amount;
+    Account.prototype.sendMoney = function (amount, otherAccount, bank) {
+        if (this.budget >= (amount + amount * 0.05)) {
+            this.budget -= (amount + amount * 0.05);
             otherAccount.budget += amount;
+            bank.budget += amount * 0.05;
             this.transactions.push({
                 accountId: otherAccount.id,
                 amount: -amount
             });
             otherAccount.transactions.push({
                 accountId: this.id,
+                amount: amount
+            });
+            bank.transactions.push({
+                accountId: this.id,
+                accountId2: otherAccount.id,
                 amount: amount
             });
         }
